@@ -77,12 +77,21 @@ def main() -> None:
     )
 
     # Logo fornecido (coloque a imagem em `assets/logo.png`)
-    logo_path = base_path / "assets" / "logo.png"
-    if logo_path.exists():
+    candidate_paths = [
+        base_path / "assets" / "logo.png",
+        Path("assets") / "logo.png",
+        Path(__file__).resolve().parent.parent / "assets" / "logo.png",
+    ]
+
+    logo_path = next((p for p in candidate_paths if p.exists()), None)
+
+    if logo_path is not None:
         st.sidebar.image(str(logo_path), width=180)
     else:
+        tried = "\n".join(f"- {p}" for p in candidate_paths)
         st.sidebar.markdown(
-            "**Logo não encontrado.** Coloque `assets/logo.png` para mostrar o logo aqui."
+            "**Logo não encontrado.** Coloque `assets/logo.png` para mostrar o logo aqui." +
+            "\n\nCaminhos verificados:\n" + tried
         )
     st.sidebar.title("🏦 Sistema de Varejo")
     st.sidebar.markdown(
