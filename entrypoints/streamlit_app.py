@@ -90,7 +90,11 @@ def main() -> None:
     logo_path = next((p for p in candidate_paths if p.exists()), None)
 
     if logo_path is not None:
-        st.sidebar.image(str(logo_path), width=180)
+        try:
+            with open(logo_path, "rb") as f:
+                st.sidebar.image(f.read(), width=180)
+        except Exception as e:
+            st.sidebar.error(f"Erro ao abrir o logo: {e}")
     else:
         tried = "\n".join(f"- {p}" for p in candidate_paths)
         st.sidebar.markdown(
