@@ -76,11 +76,14 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    # Logo fornecido (ajuste o caminho se mover o arquivo)
-    st.sidebar.image(
-        r"C:\Users\lucas\.cursor\projects\c-Users-lucas-Documents-Poli-junior-computador-treinamento-2026-0-teste-T22026\assets\c__Users_lucas_AppData_Roaming_Cursor_User_workspaceStorage_f47c1b5215e58dc66ee8691e491d7ee5_images_image-removebg-preview__10_-59315307-8949-4a45-9b06-f57261adef36.png",
-        width=180,
-    )
+    # Logo fornecido (coloque a imagem em `assets/logo.png`)
+    logo_path = base_path / "assets" / "logo.png"
+    if logo_path.exists():
+        st.sidebar.image(str(logo_path), width=180)
+    else:
+        st.sidebar.markdown(
+            "**Logo não encontrado.** Coloque `assets/logo.png` para mostrar o logo aqui."
+        )
     st.sidebar.title("🏦 Sistema de Varejo")
     st.sidebar.markdown(
         "Faça o upload de uma base de novos clientes (sem a target) "
