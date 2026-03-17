@@ -24,13 +24,58 @@ def get_engine_and_metrics():
 def main() -> None:
     st.set_page_config(
         page_title="Motor de Crédito Inteligente",
-        page_icon="🏦",
+        page_icon="💳",
         layout="wide",
     )
 
+    # Tema visual baseado nas cores do logo (roxo/azul em gradiente)
+    st.markdown(
+        """
+        <style>
+            .main {
+                background: radial-gradient(circle at top left, #1b0044 0, #090014 45%, #000000 100%);
+                color: #F5F5FF;
+            }
+
+            section[data-testid="stSidebar"] {
+                background: linear-gradient(180deg, #1b0044 0%, #34008a 50%, #090014 100%);
+                color: #F5F5FF;
+            }
+
+            section[data-testid="stSidebar"] * {
+                color: #F5F5FF !important;
+            }
+
+            .stMetric {
+                background: rgba(20, 10, 60, 0.8);
+                border-radius: 12px;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .st-emotion-cache-12w0qpk a {
+                color: #a855ff !important;
+            }
+
+            .stButton>button, .st-download-button>button {
+                background: linear-gradient(90deg, #4f46e5, #a855ff);
+                border: none;
+                color: white;
+                border-radius: 999px;
+                padding: 0.5rem 1.2rem;
+            }
+
+            .stButton>button:hover, .st-download-button>button:hover {
+                filter: brightness(1.1);
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Logo fornecido (ajuste o caminho se mover o arquivo)
     st.sidebar.image(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Poli-USP.svg/1200px-Poli-USP.svg.png",
-        width=150,
+        r"C:\Users\lucas\.cursor\projects\c-Users-lucas-Documents-Poli-junior-computador-treinamento-2026-0-teste-T22026\assets\c__Users_lucas_AppData_Roaming_Cursor_User_workspaceStorage_f47c1b5215e58dc66ee8691e491d7ee5_images_image-removebg-preview__10_-59315307-8949-4a45-9b06-f57261adef36.png",
+        width=180,
     )
     st.sidebar.title("🏦 Sistema de Varejo")
     st.sidebar.markdown(
