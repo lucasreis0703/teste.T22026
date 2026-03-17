@@ -81,6 +81,7 @@ def main() -> None:
         base_path / "assets" / "logo.png",
         Path("assets") / "logo.png",
         Path(__file__).resolve().parent.parent / "assets" / "logo.png",
+        Path.cwd() / "assets" / "logo.png",
     ]
 
     logo_path = next((p for p in candidate_paths if p.exists()), None)
@@ -91,7 +92,13 @@ def main() -> None:
         tried = "\n".join(f"- {p}" for p in candidate_paths)
         st.sidebar.markdown(
             "**Logo não encontrado.** Coloque `assets/logo.png` para mostrar o logo aqui." +
-            "\n\nCaminhos verificados:\n" + tried
+            "\n\nCaminhos verificados:\n" + tried +
+            "\n\n(Se você estiver em um ambiente remoto, confirme que o arquivo está no repositório e foi incluído no deploy.)"
+        )
+        st.sidebar.markdown(
+            "**Debug:**\n" +
+            f"- base_path = {base_path}\n" +
+            f"- cwd = {Path.cwd()}\n"
         )
     st.sidebar.title("🏦 Sistema de Varejo")
     st.sidebar.markdown(
