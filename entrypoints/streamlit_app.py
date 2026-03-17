@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+base_path = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(base_path))
 
 from src.credit_engine import CreditEngine
 
