@@ -76,12 +76,15 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    # Logo fornecido (coloque a imagem em `assets/logo.png`)
+    # Logo fornecido (coloque a imagem em `assets/logo.png` ou `logo.png` na raiz do projeto)
     candidate_paths = [
         base_path / "assets" / "logo.png",
+        base_path / "logo.png",
         Path("assets") / "logo.png",
+        Path("logo.png"),
         Path(__file__).resolve().parent.parent / "assets" / "logo.png",
         Path.cwd() / "assets" / "logo.png",
+        Path.cwd() / "logo.png",
     ]
 
     logo_path = next((p for p in candidate_paths if p.exists()), None)
